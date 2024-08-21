@@ -13,11 +13,16 @@
 
 ## Prérequis
 
-Avant de lancer le projet, assurez-vous d'avoir les éléments suivants installés sur votre machine :
+Avant de pouvoir lancer ce projet, assurez-vous que votre environnement de développement est configuré avec les éléments suivants :
 
-- [Node.js](https://nodejs.org/en/download/) (version 14.x ou supérieure)
-- [npm](https://www.npmjs.com/get-npm) ou [yarn](https://yarnpkg.com/getting-started/install)
-- [MongoDB](https://www.mongodb.com/try/download/community) (pour la base de données)
+- **Node.js** : [Télécharger et installer Node.js](https://nodejs.org/en/download/) (version 14.x ou supérieure).
+- **npm** (inclus avec Node.js) ou **Yarn** : [npm](https://www.npmjs.com/get-npm) ou [Yarn](https://yarnpkg.com/getting-started/install) pour la gestion des dépendances.
+- **Vue CLI** : Installer l'interface de ligne de commande Vue.js pour gérer le projet plus facilement.
+  
+  ```bash
+  npm install -g @vue/cli
+  # ou
+  yarn global add @vue/cli
 
 ## Installation
 
