@@ -1,361 +1,338 @@
 <template>
-  <div class="flex flex-row justify-center p-6 gap-20">
-    <div>
-      <form
-        @submit.prevent="addUser"
-        class="flex flex-col items-start gap-6 border border-gray-300 bg-white rounded-xl shadow-lg p-6 max-w-lg w-full"
-        id="new-user"
-      >
-        <section class="">
-          <h2 class="text-xl uppercase text-left font-bold text-[#273e65]">
-            Ajouter un utilisateur
-          </h2>
-          <hr class="border-t-2 border-[#ffac3f] mt-1" />
-        </section>
-        <p class="text-sm text-gray-600">
-          Utilisez le formulaire ci-dessous pour ajouter un nouvel utilisateur.
-        </p>
-
-        <!-- Civilité -->
-        <div class="flex gap-3 w-full">
-          <label
-            class="block text-gray-700 text-sm text-left font-bold"
-            for="civilite"
-            >Civilité :</label
-          >
-          <fieldset class="flex gap-5">
-            <div class="flex items-center gap-2">
-              <input
-                type="radio"
-                id="mr"
-                name="civilite"
-                value="homme"
-                checked
-                class="focus:ring-[#ffac3f]"
-              />
-              <label for="mr" class="text-sm">M.</label>
-            </div>
-            <div class="flex items-center gap-2">
-              <input
-                type="radio"
-                id="mme"
-                name="civilite"
-                value="femme"
-                class="focus:ring-[#ffac3f]"
-              />
-              <label for="mme" class="text-sm">Mme</label>
-            </div>
-          </fieldset>
-        </div>
-
-        <!-- Nom, Prénom, Email -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-          <div class="flex flex-col gap-2">
-            <label
-              for="name"
-              class="block text-gray-700 text-sm text-left font-bold"
-              >Nom & Prénom :</label
-            >
-            <input
-              id="name"
-              v-model="newUser.name"
-              type="text"
-              class="border border-gray-300 rounded-md text-sm p-2 focus:outline-none focus:ring-2 focus:ring-[#ffac3f]"
-              placeholder="John Doe"
-              required
-            />
-          </div>
-          <div class="flex flex-col gap-2">
-            <label
-              for="email"
-              class="block text-gray-700 text-sm text-left font-bold"
-              >Email :</label
-            >
-            <input
-              id="email"
-              v-model="newUser.email"
-              type="email"
-              class="border border-gray-300 rounded-md text-sm p-2 focus:outline-none focus:ring-2 focus:ring-[#ffac3f]"
-              placeholder="exemple@domain.com"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2 w-full">
-          <label
-            for="password"
-            class="block text-gray-700 text-sm text-left font-bold"
-            >Mot de passe :</label
-          >
-          <input
-            id="password"
-            v-model="newUser.password"
-            type="password"
-            class="border border-gray-300 rounded-md text-sm p-2 focus:outline-none focus:ring-2 focus:ring-[#ffac3f]"
-            placeholder="m@Dcv/jgj!10*d"
-            minlength="12"
-            maxlength="20"
-            required
-          />
-        </div>
-
-        <!-- Rôle et Date d'inscription -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-          <div class="flex flex-col gap-2">
-            <label
-              for="role"
-              class="block text-gray-700 text-sm text-left font-bold"
-              >Rôle :</label
-            >
-            <select
-              id="role"
-              v-model="newUser.role"
-              class="border border-gray-300 rounded-md text-sm p-2 focus:outline-none focus:ring-2 focus:ring-[#ffac3f]"
-              required
-            >
-              <option disabled value="">Choisir un rôle</option>
-              <option value="abonné">Abonné</option>
-              <option value="editeur">Editeur</option>
-              <option value="admin">Admin</option>
-              <option value="super-admin">Super Admin</option>
-            </select>
-          </div>
-          <div class="flex flex-col gap-2">
-            <label
-              for="registrationDate"
-              class="block text-gray-700 text-sm text-left font-bold"
-              >Date d'inscription :</label
-            >
-            <input
-              v-model="registrationDate"
-              id="registrationDate"
-              type="date"
-              readonly
-              class="border border-gray-300 rounded-md text-sm p-2 focus:outline-none focus:ring-2 focus:ring-[#ffac3f]"
-              required
-            />
-          </div>
-        </div>
-        <button
-          type="submit"
-          class="w-full bg-[#6893df] hover:bg-[#ffac3f] text-white rounded-md py-2 transition duration-300"
-        >
-          <font-awesome-icon icon="fa-regular fa-square-plus" class="mr-2" />
-          Ajouter l'utilisateur
-        </button>
-      </form>
-    </div>
+  <div class="w-full px-6">
     <div
-      class="border border-gray-300 bg-white shadow-md rounded-xl p-6 flex flex-col text-left w-[470px] h-auto gap-4"
+      class="flex flex-col items-start gap-6 border border-gray-300 bg-white rounded-xl shadow-lg p-6 mb-4"
     >
       <section>
         <h2 class="text-xl uppercase text-left font-bold text-[#273e65]">
-          Informations sur les utilisateurs
+          Ajouter un utilisateur
         </h2>
-        <hr class="border-t-2 border-[#ffac3f] mt-1" />
+        <hr class="border-t-2 border-[#6893df] mt-1 w-[240px]" />
       </section>
-
-      <!-- Statistiques générales -->
-      <div class="flex flex-col items-start gap-4 px-2 text-gray-600 mb-4">
-        <h3 class="text-md font-semibold text-gray-700">
-          Statistiques générales
-        </h3>
-        <div class="flex flex-row items-center gap-4">
-          <p>
-            <font-awesome-icon
-              icon="fa-solid fa-circle"
-              class="text-gray-400 mr-1"
-            />
-            Total:
-            <span class="font-semibold ml-2">{{ allUsers }}</span>
-          </p>
-          <p>
-            <font-awesome-icon
-              icon="fa-solid fa-circle"
-              class="text-[#0f8000] mr-2"
-            />
-            En ligne: <span class="font-semibold ml-2">{{ onlineUsers }}</span>
-          </p>
-          <p>
-            <font-awesome-icon
-              icon="fa-solid fa-circle"
-              class="text-red-600 mr-2"
-            />
-            Hors ligne:
-            <span class="font-semibold ml-2">{{ offlineUsers }}</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- Répartition des rôles -->
-      <div class="flex flex-col items-start gap-4 px-2 text-gray-600 mb-4">
-        <h3 class="text-md font-semibold text-gray-700">
-          Répartition des rôles :
-        </h3>
-        <div class="flex flex-row items-center gap-4">
-          <p>
-            <font-awesome-icon
-              icon="fa-solid fa-user-shield"
-              class="text-blue-600 mr-2"
-            />
-            Admins: <span class="font-semibold ml-2">{{ adminUsers }}</span>
-          </p>
-          <p>
-            <font-awesome-icon
-              icon="fa-solid fa-edit"
-              class="text-purple-600 mr-2"
-            />
-            Editeurs: <span class="font-semibold ml-2">{{ editorUsers }}</span>
-          </p>
-          <p>
-            <font-awesome-icon
-              icon="fa-solid fa-user"
-              class="text-yellow-500 mr-2"
-            />
-            Abonnés:
-            <span class="font-semibold ml-2">{{ subscriberUsers }}</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- Activités récentes -->
-      <div class="flex flex-col items-start gap-4 px-2 text-gray-600 mb-4">
-        <h3 class="text-md font-semibold text-gray-700">
-          Activités récentes :
-        </h3>
-        <p>
-          <font-awesome-icon
-            icon="fa-solid fa-calendar-day"
-            class="text-gray-500 mr-2"
-          />
-          Nouveaux inscrits cette semaine:
-          <span class="font-semibold">{{ newUsersThisWeek }}</span>
-        </p>
-        <p>
-          <font-awesome-icon
-            icon="fa-solid fa-history"
-            class="text-gray-500 mr-2"
-          />
-          Dernière connexion: <span class="font-semibold">{{ lastLogin }}</span>
-        </p>
-      </div>
-
-      <!-- Alertes ou Notifications -->
-      <div
-        v-if="inactiveUsers > 0"
-        class="text-red-600 font-semibold flex items-center gap-1 px-2"
+      <form
+        @submit.prevent="addUser"
+        id="new-user"
+        class="grid grid-cols-2 gap-10"
       >
-        <font-awesome-icon
-          icon="fa-solid fa-exclamation-triangle"
-          class="mr-2"
-        />
-        <span class="font-semibold">{{ inactiveUsers }}</span> utilisateurs
-        inactifs.
-      </div>
+        <!-- Informations générales -->
+        <section class="mb-4">
+          <h3 class="text-lg text-left font-medium text-[#273e65] mb-4">
+            Informations générales
+            <hr />
+          </h3>
+          <div class="space-y-4">
+            <div
+              class="flex items-center gap-3 p-2 mb-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200 text-sm"
+            >
+              <font-awesome-icon
+                icon="fa-solid fa-image"
+                class="text-[#273e65] text-xl"
+              />
+              <label for="profilePicture" class="font-semibold"
+                >Photo de profil :</label
+              >
+              <input
+                v-on:change="newUser.profilePicture"
+                type="file"
+                id="profilePicture"
+                class="mt-1 px-2 py-1 rounded-lg border border-gray-300"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-5 text-sm">
+            <div class="space-y-4">
+              <div
+                class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-user"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="lastname" class="font-semibold">Nom :</label>
+                <input
+                  v-model="newUser.lastname"
+                  type="text"
+                  id="lastname"
+                  class="w-2/3 mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  required
+                  placeholder="Niel"
+                />
+              </div>
+              <div
+                class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-venus-mars"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="gender" class="font-semibold">Genre :</label>
+                <select
+                  v-model="newUser.gender"
+                  id="gender"
+                  class="w-2/3 mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  required
+                >
+                  <option value="homme">Homme</option>
+                  <option value="femme">Femme</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+              <div
+                class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-calendar"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="birthdate" class="font-semibold"
+                  >Date de naissance :</label
+                >
+                <input
+                  v-model="newUser.birthdate"
+                  type="date"
+                  id="birthdate"
+                  class="mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                />
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div
+                class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-user"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="firstname" class="font-semibold">Prénom :</label>
+                <input
+                  v-model="newUser.firstname"
+                  type="text"
+                  id="firstname"
+                  class="mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  required
+                  placeholder="Xavier"
+                />
+              </div>
+              <div
+                class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-envelope"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="email" class="font-semibold">Email :</label>
+                <input
+                  v-model="newUser.email"
+                  type="email"
+                  id="email"
+                  class="mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  required
+                  placeholder="email.adresse@example.com"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Informations du compte -->
+        <section class="mb-4">
+          <h3 class="text-lg text-left font-medium text-[#273e65] mb-4">
+            Informations du compte
+            <hr />
+          </h3>
+          <div class="grid grid-cols-2 gap-5 text-sm">
+            <div class="space-y-4">
+              <div
+                class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-user"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="pseudo" class="font-semibold">Pseudo :</label>
+                <input
+                  v-model="newUser.pseudo"
+                  type="text"
+                  id="pseudo"
+                  class="w-2/3 mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  required
+                  placeholder="Choisissez un pseudo"
+                />
+              </div>
+              <div
+                class="relative flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-lock"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="password" class="font-semibold">Mdp</label>
+                <input
+                  v-model="newUser.password"
+                  :type="showPassword ? 'text' : 'password'"
+                  id="password"
+                  class="w-full mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  required
+                />
+                <button
+                  type="button"
+                  @click="togglePassword"
+                  class="absolute right-4 top-1/2 transform -translate-y-1/2"
+                >
+                  <font-awesome-icon
+                    :icon="
+                      showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'
+                    "
+                  />
+                </button>
+              </div>
+              <div
+                class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-bell"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="notifications" class="font-semibold"
+                  >Notifications :</label
+                >
+                <select
+                  v-model="newUser.notifications"
+                  id="notifications"
+                  class="w-1/2 mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                >
+                  <option value="email">Par Email</option>
+                  <option value="sms">Par SMS</option>
+                  <option value="none">Aucune</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div
+                class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-id-badge"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="role" class="font-semibold">Rôle :</label>
+                <select
+                  v-model="newUser.role"
+                  id="role"
+                  class="w-2/3 mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  required
+                >
+                  <option value="abonné">Abonné</option>
+                  <option value="editeur">Éditeur</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+
+              <div
+                class="relative flex items-center gap-3 p-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-lock"
+                  class="text-[#273e65] text-xl"
+                />
+                <label for="confirmPassword" class="font-semibold"
+                  >Confirmer Mdp :</label
+                >
+                <input
+                  v-model="newUser.confirmPassword"
+                  :type="showConfirmPassword ? 'text' : 'password'"
+                  id="confirmPassword"
+                  class="w-1/2 mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  required
+                />
+                <button
+                  type="button"
+                  @click="toggleConfirmPassword"
+                  class="absolute right-4 top-1/2 transform -translate-y-1/2"
+                >
+                  <font-awesome-icon
+                    :icon="
+                      showConfirmPassword
+                        ? 'fa-solid fa-eye-slash'
+                        : 'fa-solid fa-eye'
+                    "
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div></div>
+        <!-- Actions -->
+        <div class="mt-10 flex justify-end gap-4">
+          <button
+            type="submit"
+            class="px-4 py-2 text-sm font-medium text-white bg-[#ffac3f] rounded-md hover:bg-[#ffa52e] focus:outline-none focus:ring-2 focus:ring-[#ffac3f]"
+          >
+            <font-awesome-icon icon="fa-solid fa-square-plus" class="mr-2" />
+            Ajouter l'utilisateur
+          </button>
+          <router-link to="/backoffice/users-all">
+            <button
+              class="px-4 py-2 text-sm font-medium text-white bg-[#273e65] rounded-md hover:bg-[#1e2a39] focus:outline-none focus:ring-2 focus:ring-[#273e65]"
+            >
+              <font-awesome-icon
+                icon="fa-solid fa-circle-chevron-left"
+                class="mr-2"
+              />
+              Retour à la liste
+            </button>
+          </router-link>
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
 import { users } from "@/lib/UsersData.js";
+
 export default {
   data() {
     return {
-      categories: ["projets", "blog", "autres"],
-      selectedCategory: "",
-      previewUrl: null,
-      registrationDate: this.getCurrentDate(),
       newUser: {
-        name: "",
-        genre: "",
-        role: "",
+        lastname: "",
+        firstname: "",
+        gender: "",
+        role: "abonné",
+        pseudo: "",
         state: "Hors ligne",
         email: "",
         password: "",
+        confirmPassword: "",
         lastLogin: this.getCurrentDate(),
+        birthdate: "",
+        profilePicture: null,
+        interests: [],
+        notifications: "email",
+        securityQuestion: "",
       },
       users,
-      newUsersThisWeek: 8,
-      lastLogin: "2024-08-10 14:23",
-      inactiveUsers: 5,
+      showPassword: false,
+      showConfirmPassword: false,
     };
   },
-  computed: {
-    allUsers() {
-      return this.users.length;
-    },
-    onlineUsers() {
-      return this.users.filter((user) => user.state === "En ligne").length;
-    },
-    offlineUsers() {
-      return this.users.filter((user) => user.state === "Hors ligne").length;
-    },
-    adminUsers() {
-      return this.users.filter(
-        (user) => user.role === "admin" || user.role === "super admin"
-      ).length;
-    },
-    editorUsers() {
-      return this.users.filter((user) => user.role === "editeur").length;
-    },
-    subscriberUsers() {
-      return this.users.filter((user) => user.role === "abonné").length;
-    },
-  },
   methods: {
-    handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        this.previewUrl = URL.createObjectURL(file);
-      }
-    },
     getCurrentDate() {
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, "0");
-      const day = String(today.getDate()).padStart(2, "0");
+      let date = new Date();
+      let day = String(date.getDate()).padStart(2, "0");
+      let month = String(date.getMonth() + 1).padStart(2, "0");
+      let year = date.getFullYear();
       return `${year}-${month}-${day}`;
     },
-    addUser() {
-      if (
-        !this.newUser ||
-        !this.newUser.genre ||
-        !this.newUser.name ||
-        !this.newUser.role ||
-        !this.newUser.state ||
-        !this.newUser.email ||
-        !this.newUser.password
-      ) {
-        console.error("Formulaire incomplet");
-        return;
-      }
-      const newId = users.length
-        ? Math.max(...users.map((user) => user.id)) + 1
-        : 1;
-      const newUser = {
-        id: newId,
-        genre: this.newUser.genre,
-        name: this.newUser.name,
-        role: this.newUser.role,
-        state: this.newUser.state,
-        email: this.newUser.email,
-        password: this.newUser.password,
-        registrationDate: this.registrationDate,
-      };
-      users.push(newUser); // Ajouter l'utilisateur au tableau
-      this.resetForm(); // Réinitialiser le formulaire après l'ajout
+    addUser() {},
+    togglePassword() {
+      this.showPassword = !this.showPassword;
     },
-    resetForm() {
-      this.newUser = {
-        genre: "",
-        name: "",
-        role: "",
-        state: "Hors ligne",
-        email: "",
-        password: "",
-      };
-      this.registrationDate = this.getCurrentDate();
+    toggleConfirmPassword() {
+      this.showConfirmPassword = !this.showConfirmPassword;
     },
   },
 };
