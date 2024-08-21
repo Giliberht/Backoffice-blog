@@ -6,10 +6,12 @@
 
 ## Fonctionnalités
 
-- Gestion des articles : créer, modifier, supprimer et publier des articles.
-- Gestion des catégories : organiser les articles par catégories.
-- Gestion des utilisateurs : ajouter, modifier et supprimer des utilisateurs.
-- Modération des commentaires : approuver ou supprimer des commentaires.
+- **Gestion des articles** : Créer, modifier, supprimer et publier des articles.
+- **Gestion des catégories** : Organiser les articles par catégories.
+- **Gestion des utilisateurs** : Ajouter, modifier et supprimer des utilisateurs.
+- **Modération des commentaires** : Approuver ou supprimer des commentaires.
+- **Analytics** : Suivre et visualiser les statistiques de votre blog, telles que le nombre de vues, les articles les plus populaires, et les tendances des visiteurs.
+- **Gestion des messages** : Recevoir et répondre aux messages envoyés via le formulaire de contact ou les demandes de support. Les messages peuvent être consultés et gérés directement depuis le back-office.
 
 ## Prérequis
 
