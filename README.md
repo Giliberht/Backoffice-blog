@@ -2,7 +2,7 @@
 
 ## Description
 
-**Blog-office** est une application web permettant la gestion des articles de blog, des catégories, des utilisateurs, et des commentaires. Ce projet a été conçu pour offrir une interface utilisateur simple et efficace pour administrer un blog en ligne.
+**Blog-office** est un back-office permettant la gestion des articles de blog, des catégories, des utilisateurs, et des commentaires. Ce projet a été conçu pour offrir une interface utilisateur simple et efficace pour administrer un blog en ligne.
 
 ## Fonctionnalités
 
