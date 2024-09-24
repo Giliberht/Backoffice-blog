@@ -1,7 +1,7 @@
 <template>
   <div class="w-full px-6">
     <div
-      class="flex flex-col items-start gap-6 border border-gray-300 bg-white rounded-xl shadow-lg p-6 mb-4"
+      class="flex flex-col items-start gap-6 border border-gray-300 bg-white rounded-xl shadow-md p-6 mb-4"
     >
       <section>
         <h2 class="text-xl uppercase text-left font-bold text-[#273e65]">
@@ -173,6 +173,7 @@
                   :type="showPassword ? 'text' : 'password'"
                   id="password"
                   class="w-full mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  placeholder="************"
                   required
                 />
                 <button
@@ -245,6 +246,7 @@
                   :type="showConfirmPassword ? 'text' : 'password'"
                   id="confirmPassword"
                   class="w-1/2 mt-1 px-2 py-1 rounded-lg border border-gray-300"
+                  placeholder="************"
                   required
                 />
                 <button

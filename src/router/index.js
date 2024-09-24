@@ -5,7 +5,7 @@ import BackOffice from "../views/view/page/BackOffice.vue";
 import OverView from "../views/view/panel/OverView.vue";
 import DashBoard from "../views/view/panel/DashBoard.vue";
 import UserPanel from "../views/view/panel/UserPanel.vue";
-import BlogPanel from "../views/view/panel/BlogPanel.vue";
+import BlogPanel from "../views/view/panel/ArticlePanel.vue";
 import MessagePanel from "../views/view/panel/MessagePanel.vue";
 import DashBoardView from "../views/_components/DashBoardPanel/DashBoardView.vue";
 import ImagePanel from "../views/view/panel/ImagePanel.vue";
@@ -19,6 +19,8 @@ import UsersAdd from "../views/_components/UsersPanel/UsersAdd.vue";
 import UsersRole from "../views/_components/UsersPanel/UsersRole.vue";
 import UserProfile from "@/views/_components/UsersPanel/UserProfile.vue";
 import EditUser from "@/views/_components/UsersPanel/EditUser.vue";
+import AllArticle from "@/views/_components/ArticlePanel/AllArticle.vue";
+import ArticleCom from "@/views/_components/ArticlePanel/AllComments.vue";
 
 const routes = [
   {
@@ -50,7 +52,7 @@ const routes = [
       },
       {
         name: "users",
-        path: "/backoffice/users-manage",
+        path: "/backoffice/users-all",
         component: UserPanel,
         children: [
           {
@@ -84,8 +86,20 @@ const routes = [
       },
       {
         name: "article",
-        path: "/backoffice/article",
+        path: "/backoffice/article-all",
         component: BlogPanel,
+        children: [
+          {
+            name: "articleall",
+            path: "/backoffice/article-all",
+            component: AllArticle,
+          },
+          {
+            name: "articlecomments",
+            path: "/backoffice/article-comments",
+            component: ArticleCom,
+          },
+        ],
       },
       {
         name: "message",

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full px-6">
     <div
-      class="flex flex-col gap-6 border border-gray-300 bg-white rounded-xl shadow-lg p-6 mb-4"
+      class="flex flex-col gap-6 border border-gray-300 bg-white rounded-xl shadow-md p-6 mb-4"
     >
       <!-- Section de gestion des rôles -->
       <section>

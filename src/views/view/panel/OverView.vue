@@ -8,19 +8,16 @@
       <hr class="border-t-2 border-[#ffac3f] mt-2" />
     </section>
   </div>
-  <div class="max-h-[70vh] overflow-auto w-full flex gap-8 mt-8">
-    <UserStat />
-    <LastComment />
+  <div class="max-h-[70vh] overflow-auto w-full flex flex-col gap-8 mt-8">
+    <div class="grid grid-cols-3"><UserStat /></div>
   </div>
 </template>
 <script>
 import UserStat from "@/views/_components/OverViewPanel/UserStat.vue";
-import LastComment from "@/views/_components/OverViewPanel/RecentComment.vue";
 
 export default {
   components: {
     UserStat,
-    LastComment,
   },
 };
 </script>

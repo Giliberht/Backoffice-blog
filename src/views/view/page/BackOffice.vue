@@ -1,5 +1,6 @@
 <template>
-  <div class="w-scren h-full flex">
+  <div class="w-screen h-full flex">
+    <!-- Sidebar -->
     <div class="w-[400px] h-full bg-[#cbd8ec] text-white" v-show="showSide">
       <div class="h-[50px] bg-[#253555] flex justify-center items-center">
         <div class="px-[20px] inline-flex items-center w-full">
@@ -41,48 +42,171 @@
                   class="mr-5 w-[20px] h-[20px] fill-current"
                 />Dashboard</router-link
               >
-              <router-link
-                to="/backoffice/users-all"
-                class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
-                ><font-awesome-icon
-                  icon="fa-solid fa-user"
-                  class="mr-5 w-[20px] h-[20px] fill-current"
-                />Utilisateurs</router-link
-              >
-              <router-link
-                to="/backoffice/article"
-                class="inline-flex items-center relative px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
-              >
-                <font-awesome-icon
-                  icon="fa-solid fa-newspaper"
-                  class="mr-5 w-[20px] h-[20px] fill-current"
-                />Articles</router-link
-              >
+              <div>
+                <div
+                  @click="toggleUsersSubMenu"
+                  class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f] cursor-pointer"
+                >
+                  <font-awesome-icon
+                    icon="fa-solid fa-user"
+                    class="mr-5 w-[20px] h-[20px] fill-current"
+                  />
+                  Utilisateurs
+                  <font-awesome-icon
+                    :icon="
+                      showUsersSubMenu
+                        ? 'fa-solid fa-chevron-up'
+                        : 'fa-solid fa-chevron-down'
+                    "
+                    class="ml-auto w-[16px] h-[16px]"
+                  />
+                </div>
+
+                <div v-show="showUsersSubMenu" class="ml-6 mt-2 text-left">
+                  <router-link
+                    to="/backoffice/users-all"
+                    class="block text-[#cbd8ec] hover:text-[#ffc23f] py-[5px] pl-[20px] border-l-2 border-transparent hover:border-[#ffc23f]"
+                  >
+                    Liste des utilisateurs
+                  </router-link>
+                  <router-link
+                    to="/backoffice/users-add"
+                    class="block text-[#cbd8ec] hover:text-[#ffc23f] py-[5px] pl-[20px] border-l-2 border-transparent hover:border-[#ffc23f]"
+                  >
+                    Ajouter un utilisateur
+                  </router-link>
+                  <router-link
+                    to="/backoffice/users-role"
+                    class="block text-[#cbd8ec] hover:text-[#ffc23f] py-[5px] pl-[20px] border-l-2 border-transparent hover:border-[#ffc23f]"
+                  >
+                    Rôles et Permissions
+                  </router-link>
+                </div>
+              </div>
+              <div>
+                <div
+                  @click="toggleArticlesSubMenu"
+                  class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f] cursor-pointer"
+                >
+                  <font-awesome-icon
+                    icon="fa-solid fa-newspaper"
+                    class="mr-5 w-[20px] h-[20px] fill-current"
+                  />
+                  Articles
+                  <font-awesome-icon
+                    :icon="
+                      showArticlesSubMenu
+                        ? 'fa-solid fa-chevron-up'
+                        : 'fa-solid fa-chevron-down'
+                    "
+                    class="ml-auto w-[16px] h-[16px]"
+                  />
+                </div>
+
+                <div v-show="showArticlesSubMenu" class="ml-6 mt-2 text-left">
+                  <router-link
+                    to="/backoffice/article-all"
+                    class="block text-[#cbd8ec] hover:text-[#ffc23f] py-[5px] pl-[20px] border-l-2 border-transparent hover:border-[#ffc23f]"
+                  >
+                    Tous les articles
+                  </router-link>
+                  <router-link
+                    to="/backoffice/article-comments"
+                    class="block text-[#cbd8ec] hover:text-[#ffc23f] py-[5px] pl-[20px] border-l-2 border-transparent hover:border-[#ffc23f]"
+                  >
+                    Commentaires
+                  </router-link>
+                </div>
+              </div>
             </div>
             <div class="h-full">
-              <p
-                class="inline-flex items-center w-full font-semibold text-sm text-[#cbd8ec]/90 py-3"
-              >
-                Médias
-              </p>
-              <router-link
-                to="/backoffice/images-all"
-                class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
-              >
-                <font-awesome-icon
-                  icon="fa-solid fa-images"
-                  class="mr-5 w-[20px] h-[20px] fill-current"
-                />Images</router-link
-              >
-              <router-link
-                to="/backoffice/documents"
-                class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
-              >
-                <font-awesome-icon
-                  icon="fa-solid fa-file-lines"
-                  class="mr-5 w-[20px] h-[20px] fill-current"
-                />Documents</router-link
-              >
+              <div>
+                <p
+                  class="inline-flex items-center w-full font-semibold text-sm text-[#cbd8ec]/90 py-3"
+                >
+                  Médias
+                </p>
+                <div
+                  @click="toggleImagesSubMenu"
+                  class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f] cursor-pointer"
+                >
+                  <font-awesome-icon
+                    icon="fa-solid fa-image"
+                    class="mr-5 w-[20px] h-[20px] fill-current"
+                  />
+                  Images
+                  <font-awesome-icon
+                    :icon="
+                      showImagesSubMenu
+                        ? 'fa-solid fa-chevron-up'
+                        : 'fa-solid fa-chevron-down'
+                    "
+                    class="ml-auto w-[16px] h-[16px]"
+                  />
+                </div>
+
+                <div v-show="showImagesSubMenu" class="ml-6 mt-2 text-left">
+                  <router-link
+                    to="/backoffice/images-all"
+                    class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
+                  >
+                    <font-awesome-icon
+                      icon="fa-solid fa-images"
+                      class="mr-5 w-[20px] h-[20px] fill-current"
+                    />Galerie d'images</router-link
+                  >
+                  <router-link
+                    to="/backoffice/documents-all"
+                    class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
+                  >
+                    <font-awesome-icon
+                      icon="fa-solid fa-file-lines"
+                      class="mr-5 w-[20px] h-[20px] fill-current"
+                    />Documents</router-link
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  @click="toggleDocSubMenu"
+                  class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f] cursor-pointer"
+                >
+                  <font-awesome-icon
+                    icon="fa-solid fa-file-lines"
+                    class="mr-5 w-[20px] h-[20px] fill-current"
+                  />
+                  Documents
+                  <font-awesome-icon
+                    :icon="
+                      showDocSubMenu
+                        ? 'fa-solid fa-chevron-up'
+                        : 'fa-solid fa-chevron-down'
+                    "
+                    class="ml-auto w-[16px] h-[16px]"
+                  />
+                </div>
+
+                <div v-show="showDocSubMenu" class="ml-6 mt-2 text-left">
+                  <router-link
+                    to="/backoffice/documents-all"
+                    class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
+                  >
+                    <font-awesome-icon
+                      icon="fa-solid fa-file-lines"
+                      class="mr-5 w-[20px] h-[20px] fill-current"
+                    />Tous les documents</router-link
+                  >
+                  <router-link
+                    to="/backoffice/documents-all"
+                    class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
+                  >
+                    <font-awesome-icon
+                      icon="fa-solid fa-file-lines"
+                      class="mr-5 w-[20px] h-[20px] fill-current"
+                    />Tous les documents</router-link
+                  >
+                </div>
+              </div>
             </div>
           </div>
           <div
@@ -110,7 +234,10 @@
         </div>
       </div>
     </div>
+
+    <!-- Main content area -->
     <div class="w-full h-full bg-[#6990c7]">
+      <!-- Header -->
       <div
         class="h-[50px] bg-[#e8ecf6] flex items-center justify-between shadow-sm w-full px-[20px] py-[10px] z-10 border-b"
       >
@@ -128,7 +255,7 @@
           <div class="mr-8 space-x-4">
             <router-link
               to="/"
-              class="inline-flex relative items-center justify-center px-[10px] py-[10px] w-[32px] h-[32px] bg-[#273e65] transition-transform ease-in-out hover:bg-[#6990c7] rounded-full"
+              class="inline-flex relative items-center justify-center px-[10px] py-[10px] w-[32px] h-[32px] bg-[#273e65] hover:bg-[#1e2a39] transition-transform ease-in-out rounded-full"
             >
               <font-awesome-icon
                 icon="fa-solid fa-display"
@@ -138,7 +265,7 @@
             /></router-link>
             <router-link
               to="/"
-              class="inline-flex items-center justify-center px-[10px] py-[10px] w-[32px] h-[32px] bg-[#273e65] hover:bg-[#6990c7] rounded-full"
+              class="inline-flex items-center justify-center px-[10px] py-[10px] w-[32px] h-[32px] bg-[#273e65] hover:bg-[#1e2a39] rounded-full transition-transform ease-in-out"
             >
               <font-awesome-icon
                 icon="fa-solid fa-envelope"
@@ -147,7 +274,7 @@
             /></router-link>
             <router-link
               to="/"
-              class="inline-flex items-center justify-center px-[10px] py-[10px] w-[32px] h-[32px] bg-[#273e65] hover:bg-[#6990c7] rounded-full"
+              class="inline-flex items-center justify-center px-[10px] py-[10px] w-[32px] h-[32px] bg-[#273e65] hover:bg-[#1e2a39] rounded-full transition-transform ease-in-out"
             >
               <font-awesome-icon
                 icon="fa-solid fa-bell"
@@ -212,10 +339,14 @@
           </div>
         </div>
       </div>
+
+      <!-- Main Content -->
       <div
         class="flex-grow h-[calc(100vh-50px)] bg-[#f4f6fb] pt-[20px] pb-[25px] px-[20px]"
       >
-        <div class="border border-[#cbd8ec] rounded-md p-[20px] h-full">
+        <div
+          class="border border-[#cbd8ec] rounded-md p-[20px] h-full overflow-y-auto"
+        >
           <router-view></router-view>
         </div>
         <div class="text-xs py-1 w-full font-medium text-[#111827]">
@@ -232,6 +363,10 @@ export default {
     return {
       showSide: true,
       showDropMenu: false,
+      showUsersSubMenu: false,
+      showArticlesSubMenu: false,
+      showImagesSubMenu: false,
+      showDocSubMenu: false,
     };
   },
   methods: {
@@ -241,8 +376,20 @@ export default {
     toggleDropMenu() {
       this.showDropMenu = !this.showDropMenu;
     },
+    toggleUsersSubMenu() {
+      this.showUsersSubMenu = !this.showUsersSubMenu;
+    },
+    toggleArticlesSubMenu() {
+      this.showArticlesSubMenu = !this.showArticlesSubMenu;
+    },
+    toggleImagesSubMenu() {
+      this.showImagesSubMenu = !this.showImagesSubMenu;
+    },
+    toggleDocSubMenu() {
+      this.showDocSubMenu = !this.showDocSubMenu;
+    },
   },
 };
 </script>
 
-<style></style>
+<style scoped></style>

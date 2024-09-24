@@ -1,6 +1,6 @@
 <template>
   <div class="w-full px-6">
-    <div class="bg-white shadow-lg rounded-xl border border-gray-300 p-6 mb-4">
+    <div class="bg-white shadow-md rounded-xl border border-gray-300 p-6 mb-4">
       <section class="mb-6">
         <h2 class="text-xl uppercase text-left font-bold text-[#273e65]">
           Profil de l'utilisateur
