@@ -126,87 +126,25 @@
                 >
                   Médias
                 </p>
-                <div
-                  @click="toggleImagesSubMenu"
-                  class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f] cursor-pointer"
+                <router-link
+                  to="/backoffice/images-all"
+                  class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
                 >
                   <font-awesome-icon
                     icon="fa-solid fa-image"
                     class="mr-5 w-[20px] h-[20px] fill-current"
-                  />
-                  Images
-                  <font-awesome-icon
-                    :icon="
-                      showImagesSubMenu
-                        ? 'fa-solid fa-chevron-up'
-                        : 'fa-solid fa-chevron-down'
-                    "
-                    class="ml-auto w-[16px] h-[16px]"
-                  />
-                </div>
-
-                <div v-show="showImagesSubMenu" class="ml-6 mt-2 text-left">
-                  <router-link
-                    to="/backoffice/images-all"
-                    class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
-                  >
-                    <font-awesome-icon
-                      icon="fa-solid fa-images"
-                      class="mr-5 w-[20px] h-[20px] fill-current"
-                    />Galerie d'images</router-link
-                  >
-                  <router-link
-                    to="/backoffice/documents-all"
-                    class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
-                  >
-                    <font-awesome-icon
-                      icon="fa-solid fa-file-lines"
-                      class="mr-5 w-[20px] h-[20px] fill-current"
-                    />Documents</router-link
-                  >
-                </div>
-              </div>
-              <div>
-                <div
-                  @click="toggleDocSubMenu"
-                  class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f] cursor-pointer"
+                  />Galerie d'images</router-link
                 >
-                  <font-awesome-icon
-                    icon="fa-solid fa-file-lines"
-                    class="mr-5 w-[20px] h-[20px] fill-current"
-                  />
-                  Documents
-                  <font-awesome-icon
-                    :icon="
-                      showDocSubMenu
-                        ? 'fa-solid fa-chevron-up'
-                        : 'fa-solid fa-chevron-down'
-                    "
-                    class="ml-auto w-[16px] h-[16px]"
-                  />
-                </div>
-
-                <div v-show="showDocSubMenu" class="ml-6 mt-2 text-left">
-                  <router-link
-                    to="/backoffice/documents-all"
-                    class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
-                  >
-                    <font-awesome-icon
-                      icon="fa-solid fa-file-lines"
-                      class="mr-5 w-[20px] h-[20px] fill-current"
-                    />Tous les documents</router-link
-                  >
-                  <router-link
-                    to="/backoffice/documents-all"
-                    class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
-                  >
-                    <font-awesome-icon
-                      icon="fa-solid fa-file-lines"
-                      class="mr-5 w-[20px] h-[20px] fill-current"
-                    />Tous les documents</router-link
-                  >
-                </div>
               </div>
+              <router-link
+                to="/backoffice/documents-all"
+                class="inline-flex relative items-center px-[10px] py-[10px] w-full text-md font-medium border-[#cbd8ec] hover:bg-[#111827]/50 hover:text-[#ffc23f] rounded-md focus:bg-[#111827]/50 focus:text-[#ffc23f]"
+              >
+                <font-awesome-icon
+                  icon="fa-solid fa-file-lines"
+                  class="mr-5 w-[20px] h-[20px] fill-current"
+                />Documents</router-link
+              >
             </div>
           </div>
           <div

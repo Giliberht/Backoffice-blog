@@ -21,6 +21,7 @@ import UserProfile from "@/views/_components/UsersPanel/UserProfile.vue";
 import EditUser from "@/views/_components/UsersPanel/EditUser.vue";
 import AllArticle from "@/views/_components/ArticlePanel/AllArticle.vue";
 import ArticleCom from "@/views/_components/ArticlePanel/AllComments.vue";
+import ArticleAdd from "@/views/_components/ArticlePanel/AddArticle.vue";
 
 const routes = [
   {
@@ -98,6 +99,11 @@ const routes = [
             name: "articlecomments",
             path: "/backoffice/article-comments",
             component: ArticleCom,
+          },
+          {
+            name: "articleadd",
+            path: "/backoffice/article-add",
+            component: ArticleAdd,
           },
         ],
       },

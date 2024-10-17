@@ -5,7 +5,7 @@
         <h2 class="text-xl uppercase text-left font-bold text-[#273e65]">
           Commentaires
         </h2>
-        <hr class="border-t-2 border-[#6893df] mt-1 w-[240px]" />
+        <hr class="border-t-2 border-[#6893df] mt-1 w-[165px]" />
       </section>
       <div class="flex justify-between mb-6">
         <div class="flex">
@@ -107,70 +107,15 @@
   </div>
 </template>
 <script>
+import { comments } from "@/lib/CommentData.js";
+
 export default {
   data() {
     return {
       searchQuery: "",
       filters: ["Tous", "Approuvés", "En attente", "Rejetés"],
       currentFilter: "Tous",
-      comments: [
-        {
-          id: 1,
-          author: "John",
-          text: "J'ai adoré cet article, très bien expliqué ! Merci pour le partage.",
-          date: "2024-09-01",
-          status: "Approuvés",
-        },
-        {
-          id: 2,
-          author: "Jane",
-          text: "Il y a un point qui me semble discutable. Je ne partage pas tout à fait cet avis.",
-          date: "2024-09-02",
-          status: "En attente",
-        },
-        {
-          id: 3,
-          author: "Paul",
-          text: "Merci pour cet article, il m'a beaucoup aidé à comprendre le sujet.",
-          date: "2024-09-03",
-          status: "Approuvés",
-        },
-        {
-          id: 4,
-          author: "Clara",
-          text: "Je pense que certaines informations sont incorrectes. Pouvez-vous vérifier ?",
-          date: "2024-09-04",
-          status: "En attente",
-        },
-        {
-          id: 5,
-          author: "Alice",
-          text: "Je trouve que cet article manque de sources fiables.",
-          date: "2024-09-05",
-          status: "Rejetés",
-        },
-        {
-          id: 6,
-          author: "Mark",
-          text: "Un super article qui aborde bien tous les aspects du sujet. Bravo !",
-          date: "2024-09-06",
-          status: "Approuvés",
-        },
-        {
-          id: 7,
-          author: "Lisa",
-          text: "J'ai appris beaucoup de choses nouvelles en lisant cet article. Très bien écrit !",
-          date: "2024-09-07",
-          status: "Approuvés",
-        },
-        {
-          id: 8,
-          author: "Tom",
-          text: "Ce sujet est assez controversé, je pense qu'il manque d'objectivité.",
-          date: "2024-09-08",
-          status: "Rejetés",
-        },
-      ],
+      comments: comments,
     };
   },
   computed: {

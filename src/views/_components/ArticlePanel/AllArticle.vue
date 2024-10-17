@@ -131,101 +131,31 @@
             />
           </button>
         </div>
-        <button
-          @click="newArticle"
-          class="flex px-4 py-2 text-sm font-medium text-white bg-[#273e65] rounded-md shadow-sm hover:bg-[#1e2a39] focus:outline-none focus:ring-2 focus:ring-[#273e65]"
+
+        <router-link
+          to="/backoffice/article-add"
+          class="flex justify-center px-4 py-2 text-sm font-medium text-white bg-[#273e65] rounded-md shadow-sm hover:bg-[#1e2a39] focus:outline-none focus:ring-2 focus:ring-[#273e65]"
         >
           <font-awesome-icon
             icon="fa-solid fa-square-plus"
             class="text-xl mr-2"
           />
-          Nouvel Article
-        </button>
+          Nouvel Article</router-link
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { articles } from "@/lib/ArticleData.js";
+
 export default {
   data() {
     return {
       filters: ["Tous", "Publiés", "Brouillons", "Programmés"],
       currentFilter: "Tous",
-      articles: [
-        {
-          id: 1,
-          title: "Je suis le numéro 1 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-          excerpt:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum molestie quam et consectetur. Aenean viverra mauris vitae sollicitudin molestie. Vestibulum condimentum metus sit amet quam porttitor mollis.",
-          status: "Publiés",
-          author: "Gibert Victor",
-          thumbnail: "https://via.placeholder.com/100",
-        },
-        {
-          id: 2,
-          title: "Article 2",
-          excerpt:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum molestie quam et consectetur. Aenean viverra mauris vitae sollicitudin molestie. Vestibulum condimentum metus sit amet quam porttitor mollis.",
-          status: "Brouillons",
-          author: "Lemoine Julien",
-          thumbnail: "https://via.placeholder.com/100",
-        },
-        {
-          id: 3,
-          title: "Article 3",
-          excerpt:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum molestie quam et consectetur. Aenean viverra mauris vitae sollicitudin molestie. Vestibulum condimentum metus sit amet quam porttitor mollis.",
-          status: "Programmés",
-          author: "Bernard Emma",
-          thumbnail: "https://via.placeholder.com/100",
-        },
-        {
-          id: 4,
-          title: "Article 4",
-          excerpt:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum molestie quam et consectetur. Aenean viverra mauris vitae sollicitudin molestie. Vestibulum condimentum metus sit amet quam porttitor mollis.",
-          status: "Programmés",
-          author: "Dubois Nicolas",
-          thumbnail: "https://via.placeholder.com/100",
-        },
-        {
-          id: 5,
-          title: "Article 5",
-          excerpt:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum molestie quam et consectetur. Aenean viverra mauris vitae sollicitudin molestie. Vestibulum condimentum metus sit amet quam porttitor mollis.",
-          status: "Programmés",
-          author: "Lemoine Julien",
-          thumbnail: "https://via.placeholder.com/100",
-        },
-        {
-          id: 5,
-          title: "Article 6",
-          excerpt:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum molestie quam et consectetur. Aenean viverra mauris vitae sollicitudin molestie. Vestibulum condimentum metus sit amet quam porttitor mollis.",
-          status: "Programmés",
-          author: "Lemoine Julien",
-          thumbnail: "https://via.placeholder.com/100",
-        },
-        {
-          id: 5,
-          title: "Article 7",
-          excerpt:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum molestie quam et consectetur. Aenean viverra mauris vitae sollicitudin molestie. Vestibulum condimentum metus sit amet quam porttitor mollis.",
-          status: "Programmés",
-          author: "Lemoine Julien",
-          thumbnail: "https://via.placeholder.com/100",
-        },
-        {
-          id: 5,
-          title: "Article 8",
-          excerpt:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc interdum molestie quam et consectetur. Aenean viverra mauris vitae sollicitudin molestie. Vestibulum condimentum metus sit amet quam porttitor mollis.",
-          status: "Programmés",
-          author: "Lemoine Julien",
-          thumbnail: "https://via.placeholder.com/100",
-        },
-      ],
+      articles: articles,
     };
   },
   computed: {
@@ -240,7 +170,7 @@ export default {
     setFilter(filter) {
       this.currentFilter = filter;
     },
-    newArticle() {},
+    viewArticle() {},
     editArticle() {},
     deleteArticle() {},
   },
